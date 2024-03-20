@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import fs from 'fs';
 import path from "path";
 
-const LOG_DIR = process.env.LOG_DIR || './logs'
+const LOG_DIR = process.env.LOG_DIR || 'logs'
 
 function Log(logFormat = 'simples') {
   return (req: Request, res: Response, next: NextFunction) => {
