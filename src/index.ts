@@ -11,6 +11,14 @@ import setLangCookie from './middleware/setLangCookie.middleware';
 import homeRouter from './router/router';
 import validateEnv from './utils/validate-env';
 
+declare module 'express-session' {
+  interface SessionData {
+    uid: string;
+    tipoUsuarioId: string;
+    carrinho: string[];
+  }
+}
+
 dotenv.config();
 validateEnv();
 const PORT = process.env.PORT || 3333;

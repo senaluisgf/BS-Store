@@ -41,7 +41,6 @@ export async function updateUser(id: string, dto: UpdateUsuarioDto) {
     data: {
       nome: dto.nome,
       email: dto.email,
-      tipoUsuarioId: dto.tipoUsuarioId,
     }
   });
 }
