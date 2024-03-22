@@ -1,19 +1,34 @@
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import express from 'express';
+import session from 'express-session';
 import morgan from 'morgan';
-import Log from './middleware/log.middleware';
-import validateEnv from './utils/validate-env';
+import { v4 as uuidv4 } from 'uuid';
 
+import Log from './middleware/log.middleware';
+import setLangCookie from './middleware/setLangCookie.middleware';
 import homeRouter from './router/router';
+import validateEnv from './utils/validate-env';
 
 dotenv.config();
 validateEnv();
 const PORT = process.env.PORT || 3333;
+const SESSION_SECRET = process.env.SESSION_SECRET || '';
 const publicPath = `${process.cwd()}/public`;
 
 const app = express();
 app.use(bodyParser.json());
+
+app.use(cookieParser());
+app.use(setLangCookie);
+
+app.use(session({
+  genid: (req) => uuidv4(),
+  secret: SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true
+}));
 
 app.use('/css', express.static(`${publicPath}/css`));
 app.use('/js', express.static(`${publicPath}/js`));
@@ -25,7 +40,7 @@ app.use(Log('completo'));
 app.use(homeRouter);
 
 // qualquer rota que não exista cai aqui
-app.use(function(req, res) {
+app.use(function (req, res) {
   res.statusCode = 404;
   res.end("Page not Found")
 })
