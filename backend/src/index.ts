@@ -21,8 +21,8 @@ declare module 'express-session' {
 
 dotenv.config();
 validateEnv();
-const PORT = process.env.PORT || 3333;
-const SESSION_SECRET = process.env.SESSION_SECRET || '';
+const PORT = process.env.PORT!;
+const SESSION_SECRET = process.env.SESSION_SECRET!;
 const publicPath = `${process.cwd()}/public`;
 
 const app = express();

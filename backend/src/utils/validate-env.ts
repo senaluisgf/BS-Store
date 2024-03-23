@@ -12,7 +12,6 @@ const validateEnv = () => {
     MYSQL_DATABASE: str(),
     MYSQL_ROOT_PASSWORD: str(),
     MYSQL_LOCAL_PORT: port(),
-    MYSQL_DOCKER_PORT: port(),
   });
 };
 
