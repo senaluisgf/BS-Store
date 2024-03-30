@@ -1,7 +1,7 @@
+import styles from "@/styles/Home.module.css";
+import { Inter } from "next/font/google";
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -58,7 +58,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2>
-              Docs <span>-&gt;</span>
+              Docs testando<span>-&gt;</span>
             </h2>
             <p>
               Find in-depth information about Next.js features and&nbsp;API.

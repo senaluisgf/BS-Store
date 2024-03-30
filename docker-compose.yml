@@ -5,51 +5,53 @@ services:
     build:
       context: ./backend
     ports:
-      - "${BACKEND_PORT}:${BACKEND_PORT}"
+      - "4000:${BACKEND_PORT}"
     volumes:
     - ./backend:/app
     environment:
       - NODE_ENV=${NODE_ENV}
     depends_on:
-    - db
+      - db
     networks:
       - loja_network
   
   front:
     container_name: loja_frontend
     build:
-      context: ./frontend
+      context: frontend
     ports:
-      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+      - "3000:${FRONTEND_PORT}"
     volumes:
       - ./frontend:/app
     environment:
       - NODE_ENV=${NODE_ENV}
     depends_on:
-    - back
+      - back
     networks:
       - loja_network
 
   db:
     image: mysql:8
-    container_name: loja_db
-    env_file: ./backend/.env
+    container_name: loja_database
+    command: --innodb-use-native-aio=0
+    restart: unless-stopped
+    expose:
+      - 3306
     ports:
-      - "3336:3306"
+      - ${MYSQL_LOCAL_PORT}:3306
     volumes:
       - mysql_loja_db:/var/lib/mysql
       - mysql_loja_db_config:/etc/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=loja
-      - MYSQL_ROOT_HOST=root
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     networks:
       - loja_network
+
+networks:
+  loja_network:
+    driver: bridge
 
 volumes:
   mysql_loja_db:
   mysql_loja_db_config:
-
-networks:
-  loja_network:
-    driver: 'bridge'
