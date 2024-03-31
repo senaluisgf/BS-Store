@@ -6,6 +6,7 @@ import session from 'express-session';
 import morgan from 'morgan';
 import { v4 as uuidv4 } from 'uuid';
 
+import cors from 'cors';
 import Log from './middleware/log.middleware';
 import setLangCookie from './middleware/setLangCookie.middleware';
 import homeRouter from './router/router';
@@ -26,6 +27,7 @@ const SESSION_SECRET = process.env.SESSION_SECRET!;
 const publicPath = `${process.cwd()}/public`;
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use(cookieParser());
