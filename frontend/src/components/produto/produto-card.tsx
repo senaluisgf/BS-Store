@@ -11,18 +11,17 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from "react";
 interface ProdutoCardProps {
-  produtoId: string
+  id: string
 }
 
-export default function ProdutoCard({produtoId}: ProdutoCardProps) {
+export default function ProdutoCard({id}: ProdutoCardProps) {
   const [quantidade, setQuantidade] = useState(1);
   const [produto, setProduto] = useState<Produto>()
-  const precoTotal = quantidade * (produto?.preco || 0);
 
   useEffect(() => {
-    api.get(`produto/${produtoId}`)
+    api.get(`produto/${id}`)
       .then(({data}) => setProduto(data))
-  }, []);
+  }, [id]);
 
   const increaseQuantidade = () => {
     if (produto && produto.estoque > quantidade) {
@@ -38,21 +37,23 @@ export default function ProdutoCard({produtoId}: ProdutoCardProps) {
     if (quantidade) console.log(`Compramos ${quantidade} ${produto?.nome}`)
   }
 
+  if (!produto) return <div>Carregando...</div>
+  
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {produto?.nome}
+          {produto.nome}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Preço: {produto?.preco}<br />
-          Estoque: {produto?.estoque}
+          Preço: {produto.preco}<br />
+          Estoque: {produto.estoque}
         </Typography>
       </CardContent>
       <CardActions style={{display: 'flex', justifyContent: 'space-between'}}>
         <Typography variant="body2" color="text.secondary">
           Quantidade: {quantidade}<br />
-          Preço total: {precoTotal}<br />
+          Preço total: {quantidade * produto.preco}<br />
         </Typography>
         <ButtonGroup variant="contained" aria-label="Basic button group">
           <Button onClick={increaseQuantidade}><AddIcon /></Button>

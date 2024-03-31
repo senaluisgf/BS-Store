@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 
 function ProdutoPage() {
   const router = useRouter();
-  const produtoId = router.query.produtoId as string;
-  return <ProdutoCard  produtoId={produtoId} />
+  const id = router.query.produtoId as string;
+  return <ProdutoCard  id={id} />
 }
 
 export default ProdutoPage;
