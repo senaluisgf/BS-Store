@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 
 export default function NavBar() {
   return (
@@ -23,6 +24,7 @@ export default function NavBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Minha Loja (BS Store)
           </Typography>
+          <Button component={Link} href='/produto' color="inherit">Produtos</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

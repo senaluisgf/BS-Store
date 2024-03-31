@@ -1,4 +1,5 @@
 import Produto from "@/types/produto";
+import api from "@/utils/api";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -8,17 +9,25 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 interface ProdutoCardProps {
-  produto: Produto
+  produtoId: string
 }
 
-export default function ProdutoCard({produto}: ProdutoCardProps) {
-  let [quantidade, setQuantidade] = useState(1);
-  const precoTotal = quantidade * produto.preco;
+export default function ProdutoCard({produtoId}: ProdutoCardProps) {
+  const [quantidade, setQuantidade] = useState(1);
+  const [produto, setProduto] = useState<Produto>()
+  const precoTotal = quantidade * (produto?.preco || 0);
+
+  useEffect(() => {
+    api.get(`produto/${produtoId}`)
+      .then(({data}) => setProduto(data))
+  }, []);
 
   const increaseQuantidade = () => {
-    setQuantidade(quantidade+1);
+    if (produto && produto.estoque > quantidade) {
+      setQuantidade(quantidade+1);
+    }
   }
   
   const decreaseQuantidade = () => {
@@ -26,18 +35,18 @@ export default function ProdutoCard({produto}: ProdutoCardProps) {
   }
 
   const buyProduto = () => {
-    if (quantidade) console.log(`Compramos ${quantidade} ${produto.nome}`)
+    if (quantidade) console.log(`Compramos ${quantidade} ${produto?.nome}`)
   }
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {produto.nome}
+          {produto?.nome}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Preço: {produto.preco}<br />
-          Estoque: {produto.estoque}
+          Preço: {produto?.preco}<br />
+          Estoque: {produto?.estoque}
         </Typography>
       </CardContent>
       <CardActions style={{display: 'flex', justifyContent: 'space-between'}}>
