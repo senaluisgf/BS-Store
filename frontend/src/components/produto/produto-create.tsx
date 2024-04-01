@@ -15,7 +15,7 @@ export default function ProdutoCreate() {
   return (
     <>
       <Box>
-        <h1>Criar um Produto</h1>
+        <h1>Criar Produto</h1>
       </Box>
       <ProdutoForm handleSubmit={handleSubmit} />
     </>

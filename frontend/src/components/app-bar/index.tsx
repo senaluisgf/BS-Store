@@ -21,11 +21,16 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Minha Loja (BS Store)
+          <Typography
+            variant="h6"
+            sx={{ flexGrow: 1 }}
+            component={Link}
+            href={'/'}
+          >
+            BS Store
           </Typography>
           <Button component={Link} href='/produto' color="inherit">Produtos</Button>
-          <Button color="inherit">Login</Button>
+          <Button component={Link} href='/auth/login' color="inherit">Login</Button>
           <Button component={Link} href='/auth/signup' color="inherit">Sign Up</Button>
         </Toolbar>
       </AppBar>

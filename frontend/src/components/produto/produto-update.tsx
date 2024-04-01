@@ -30,7 +30,7 @@ export default function ProdutoUpdate({ id }: ProdutoUpdateProps) {
 
   return (
     <>
-      <h1>Update Produto</h1>
+      <h1>Atualizar Produto</h1>
       <ProdutoForm handleSubmit={handdleSubmit} produto={produto} />
     </>
   )

@@ -32,7 +32,7 @@ export default function SignUp() {
 
   return (
     <>
-      <h1>Sign Up</h1>
+      <h1>Crie sua conta</h1>
       <form onSubmit={onSubmit}>
         <Box sx={{mb: 2, mt: 2}}>
           <TextField
