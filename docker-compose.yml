@@ -14,7 +14,8 @@ services:
     volumes:
     - ./backend:/app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
       - loja_network
     environment:
@@ -45,7 +46,6 @@ services:
     container_name: loja_database
     env_file:
       - ./backend/.env
-    # command: --innodb-use-native-aio=0
     restart: unless-stopped
     expose:
       - 3306
@@ -56,6 +56,11 @@ services:
       - mysql_loja_db_config:/etc/mysql
     networks:
       - loja_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
 
 networks:
   loja_network:

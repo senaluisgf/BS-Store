@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "prisma generate && prisma migrate reset --force && nodemon src/index.ts",
-    "start": "prisma generate && migrate deploy && prisma db seed && node build/index.js",
+    "start": "prisma generate && prisma migrate deploy && prisma db seed && node build/index.js",
     "build": "npx tsc",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "eslint --fix --ext .ts src/",

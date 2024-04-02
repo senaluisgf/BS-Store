@@ -12,6 +12,9 @@ const validateEnv = () => {
     MYSQL_LOCAL_HOST: str(),
     MYSQL_ROOT_HOST: str(),
     SESSION_SECRET: str(),
+    FRONTEND_HOST: str(),
+    FRONTEND_URL: url(),
+    FRONTEND_PORT: port(),
     BACKEND_PORT: port(),
   });
 };
