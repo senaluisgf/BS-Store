@@ -3,6 +3,7 @@ import { TiposUsuarios } from "../src/resources/tipoUsuario/tipoUsuario.constant
 
 const prisma = new PrismaClient();
 
+
 async function main() {
   await prisma.tipoUsuario.createMany({
     data: [
@@ -11,6 +12,15 @@ async function main() {
     ],
     skipDuplicates: true,
   });
+
+  await prisma.usuario.create({
+    data: {
+      nome: "Administrador",
+      email: "admin@email.com",
+      senha: "$2a$10$Pok71OtmsZ9q4.Tqet7cbu3GUmmibM4u3GY1OmvVJ/s373C9Z8sb6",
+      tipoUsuarioId: TiposUsuarios.ADMIN,
+    }
+  })
 }
 
 main()

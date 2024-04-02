@@ -17,9 +17,6 @@ RUN npm install
 
 COPY . .
 
-# Expõe a porta
-EXPOSE 4000
-
 # Modifica o comando para usar o script de espera
 # CMD ["npm", "start"]
 CMD ["sh", "start.sh"]

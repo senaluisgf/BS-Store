@@ -10,6 +10,7 @@ import cors from 'cors';
 import Log from './middleware/log.middleware';
 import setLangCookie from './middleware/setLangCookie.middleware';
 import homeRouter from './router/router';
+import validateEnv from './utils/validate-env';
 
 declare module 'express-session' {
   interface SessionData {
@@ -20,6 +21,7 @@ declare module 'express-session' {
 }
 
 dotenv.config({path: ['../.env']});
+validateEnv()
 const PORT = process.env.BACKEND_PORT!;
 const SESSION_SECRET = process.env.SESSION_SECRET!;
 const publicPath = `${process.cwd()}/public`;

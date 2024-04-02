@@ -31,7 +31,7 @@ async function login(req: Request, res: Response) {
     req.session.uid = usuario.id;
     req.session.tipoUsuarioId = usuario.tipoUsuarioId;
     req.session.carrinho = [];
-    res.status(200).json({ msg: 'Usuário autenticado' });
+    res.status(200).json({ nome: usuario.nome, tipoUsuario: TiposUsuarios.ADMIN === usuario.tipoUsuarioId ? 'admin' : 'client' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: 'Não foi possível criar o usuário' })
