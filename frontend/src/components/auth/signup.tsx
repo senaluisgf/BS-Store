@@ -36,6 +36,7 @@ export default function SignUp() {
       <form onSubmit={onSubmit}>
         <Box sx={{mb: 2, mt: 2}}>
           <TextField
+            sx={{width: 300}}
             label="Nome"
             type="text"
             value={nome}
@@ -45,6 +46,7 @@ export default function SignUp() {
 
         <Box sx={{mb: 2}}>
           <TextField
+            sx={{width: 300}}
             label="Email"
             type="email"
             value={email}
@@ -54,6 +56,7 @@ export default function SignUp() {
 
         <Box sx={{ mb: 2 }}>
           <TextField
+            sx={{width: 300}}
             label="Senha"
             type={showPassword ? "text" : "password"}
             value={senha}
@@ -70,6 +73,7 @@ export default function SignUp() {
 
         <Box>
           <TextField
+            sx={{width: 300}}
             label="Confirme a senha"
             type={showConfirmPassword ? "text" : "password"}
             value={confirmeSenha}

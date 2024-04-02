@@ -27,6 +27,7 @@ export default function ProdutoForm({handleSubmit, produto}: ProdutoFormProps) {
       <form onSubmit={onSubmit}>
         <Box sx={{ mb: 2, mt: 2 }}>
           <TextField
+            sx={{width: 250}}
             required
             label="Nome"
             type="text"
@@ -37,6 +38,7 @@ export default function ProdutoForm({handleSubmit, produto}: ProdutoFormProps) {
 
         <Box sx={{ mb: 2 }}>
           <TextField
+            sx={{width: 250}}
             required
             label="Preço"
             type="number"
@@ -47,6 +49,7 @@ export default function ProdutoForm({handleSubmit, produto}: ProdutoFormProps) {
 
         <Box sx={{ mb: 2 }}>
           <TextField
+            sx={{width: 250}}
             required
             label="Estoque"
             type="number"

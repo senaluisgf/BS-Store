@@ -28,6 +28,7 @@ export default function Login() {
       <form onSubmit={onSubmit}>
         <Box sx={{ mb: 2, mt: 2 }}>
           <TextField
+            sx={{width: 300}}
             required
             label="Email"
             value={email}
@@ -37,6 +38,7 @@ export default function Login() {
 
         <Box>
           <TextField
+            sx={{width: 300}}
             label="Senha"
             required
             type={showPassword ? "text" : "password"}
