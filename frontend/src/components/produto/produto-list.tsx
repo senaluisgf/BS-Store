@@ -9,7 +9,9 @@ export default function ProdutoList() {
   const [produtos, setProdutos] = useState<Produto[]>([])
 
   useEffect(() => {
-    api.get("/produto").then((data) => setProdutos(data.data))
+    api.get("/produto", { withCredentials: true })
+      .then((data) => setProdutos(data.data))
+      .catch(error => console.error(error));
   }, []);
 
   return (

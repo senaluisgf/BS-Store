@@ -14,13 +14,13 @@ export default function ProdutoUpdate({ id }: ProdutoUpdateProps) {
   const router = useRouter();
 
   useEffect(() => {
-    api.get(`produto/${id}`)
+    api.get(`produto/${id}`, { withCredentials: true })
       .then(({data}) => setProduto(data))
       .catch(error => console.error(error));
   }, [id]);
 
   const handdleSubmit = (produto: UpdateProdutoDTO) => {
-    api.put(`produto/${id}`, produto)
+    api.put(`produto/${id}`, produto, { withCredentials: true })
       .then(() => router.push(`/produto/${id}`))
       .catch(error => console.error(error))
     

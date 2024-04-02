@@ -14,7 +14,7 @@ export default function Login() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    api.post("/login", { email, senha })
+    api.post("/login", { email, senha }, { withCredentials: true })
       .then(() => router.push('/'))
       .catch(error => {
         console.error(error);

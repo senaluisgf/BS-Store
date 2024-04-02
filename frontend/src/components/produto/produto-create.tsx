@@ -8,7 +8,7 @@ export default function ProdutoCreate() {
   const router = useRouter();
 
   const handleSubmit = (produto: CreateProdutoDTO) => {
-    api.post('/produto', produto)
+    api.post('/produto', produto, { withCredentials: true })
       .then(() => router.push('/produto'))
       .catch(error => console.error(error));
   }

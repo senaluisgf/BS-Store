@@ -46,7 +46,7 @@ export default function ProdutoCard({id}: ProdutoCardProps) {
   }
 
   const onDelete = () => {
-    api.delete(`/produto/${id}`)
+    api.delete(`/produto/${id}`, { withCredentials: true })
       .then(() => router.push('/produto'))
       .catch(error => console.error(error));
   }
