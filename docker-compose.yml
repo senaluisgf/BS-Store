@@ -41,7 +41,7 @@ services:
     container_name: loja_database
     env_file:
       - ./backend/.env
-    command: --innodb-use-native-aio=0
+    # command: --innodb-use-native-aio=0
     restart: unless-stopped
     expose:
       - 3306
