@@ -1,11 +1,13 @@
+import { AuthContext } from "@/providers/auth-provider";
 import { Produto } from "@/types/produto";
 import api from "@/utils/api";
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from "@mui/material";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function ProdutoList() {
+  const { auth } = useContext(AuthContext);
   const [produtos, setProdutos] = useState<Produto[]>([])
 
   useEffect(() => {
@@ -18,14 +20,14 @@ export default function ProdutoList() {
     <>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
         <h1>Produtos</h1>
-        <Button
+        {auth && auth.tipoUsuario === 'admin' && <Button
           component={Link}
           href="/produto/create"
           variant="contained"
           size="small"
         >
           <AddIcon />
-        </Button>
+        </Button>}
       </div>
       <ul>
         {produtos.map(p => (

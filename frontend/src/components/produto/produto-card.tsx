@@ -1,3 +1,4 @@
+import { AuthContext } from "@/providers/auth-provider";
 import { Produto } from "@/types/produto";
 import api from "@/utils/api";
 import AddIcon from '@mui/icons-material/Add';
@@ -14,12 +15,13 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 interface ProdutoCardProps {
   id: string
 }
 
 export default function ProdutoCard({id}: ProdutoCardProps) {
+  const { auth } = useContext(AuthContext);
   const [quantidade, setQuantidade] = useState(1);
   const [produto, setProduto] = useState<Produto>()
 
@@ -60,10 +62,10 @@ export default function ProdutoCard({id}: ProdutoCardProps) {
           <Typography gutterBottom variant="h5" component="div">
             {produto.nome}
           </Typography>
-          <div>
-          <IconButton component={Link} href={`/produto/update/${id}`}><EditIcon /></IconButton>
-          <IconButton onClick={onDelete} ><DeleteIcon /></IconButton>
-          </div>
+          {auth && auth.tipoUsuario === 'admin' && <div>
+            <IconButton component={Link} href={`/produto/update/${id}`}><EditIcon /></IconButton>
+            <IconButton onClick={onDelete} ><DeleteIcon /></IconButton>
+          </div>}
         </Box>
         <Typography variant="body2" color="text.secondary">
           Preço: {produto.preco}<br />

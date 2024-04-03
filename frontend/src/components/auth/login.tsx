@@ -1,10 +1,12 @@
+import { AuthContext } from "@/providers/auth-provider";
 import api from "@/utils/api";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 
 export default function Login() {
+  const {setAuth} = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -15,7 +17,10 @@ export default function Login() {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     api.post("/login", { email, senha }, { withCredentials: true })
-      .then(() => router.push('/'))
+      .then(({data}) => {
+        setAuth(data)
+        router.push('/')
+      })
       .catch(error => {
         console.error(error);
         setError('Email e/ou senha inválidos');

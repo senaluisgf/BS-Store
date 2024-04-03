@@ -25,7 +25,7 @@ export default function SignUp() {
     } else {
       setError("");
       api.post("/signup", {nome, email, senha})
-        .then((data) => router.push('/produto'))
+        .then((data) => router.push('/auth/login'))
         .catch(error => console.error(error.response.data.error.map((e: any) => e.message).join('\n')));
     }
   }

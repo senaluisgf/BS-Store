@@ -1,9 +1,7 @@
-function Home() {
-  return (
-    <>
-      <h1>Página Inicial</h1>
-    </>
-  )
+import ProdutoList from "@/components/produto/produto-list"
+
+function HomePage() {
+  return <ProdutoList />
 }
 
-export default Home
+export default HomePage
