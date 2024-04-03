@@ -9,7 +9,6 @@ const validateEnv = () => {
     MYSQL_DATABASE: str(),
     MYSQL_ROOT_PASSWORD: str(),
     MYSQL_ROOT_USER: str(),
-    MYSQL_LOCAL_HOST: str(),
     MYSQL_ROOT_HOST: str(),
     SESSION_SECRET: str(),
     FRONTEND_URL: url(),

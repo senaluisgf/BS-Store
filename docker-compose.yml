@@ -3,14 +3,15 @@ services:
   back:
     container_name: loja_backend
     env_file:
+      - ./backend/.env.database
       - ./backend/.env
     restart: unless-stopped
     expose:
       - ${BACKEND_PORT}
-    build:
-      context: ./backend
     ports:
       - ${BACKEND_PORT}:${BACKEND_PORT}
+    build:
+      context: ./backend
     volumes:
     - ./backend:/app
     depends_on:
@@ -45,12 +46,8 @@ services:
     image: mysql:8
     container_name: loja_database
     env_file:
-      - ./backend/.env
+      - ./backend/.env.database
     restart: unless-stopped
-    expose:
-      - 3306
-    ports:
-      - ${DATABASE_PORT}:3306
     volumes:
       - mysql_loja_db:/var/lib/mysql
       - mysql_loja_db_config:/etc/mysql
