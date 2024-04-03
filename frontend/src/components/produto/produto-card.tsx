@@ -44,7 +44,13 @@ export default function ProdutoCard({id}: ProdutoCardProps) {
   }
 
   const buyProduto = () => {
-    if (quantidade) console.log(`Compramos ${quantidade} ${produto?.nome}`)
+    if (quantidade) {
+      api.post(`/compra/produto/${id}`, {quantidade}, { withCredentials: true })
+        .then(({data}) => {
+          console.log(data)
+        })
+        .catch(error => console.error(error))
+    }
   }
 
   const onDelete = () => {

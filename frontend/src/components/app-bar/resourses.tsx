@@ -47,13 +47,6 @@ export default function Resourses(){
         >
           <MenuItem
             onClick={handleClose}
-            component={Link} href='/'
-          >
-            Página Inicial
-          </MenuItem>
-
-          <MenuItem
-            onClick={handleClose}
             component={Link} href='/produto'
           >
             Produtos

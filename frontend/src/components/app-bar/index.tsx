@@ -1,4 +1,5 @@
 import { AuthContext } from '@/providers/auth-provider';
+import api from '@/utils/api';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -14,8 +15,12 @@ export default function NavBar() {
   const router = useRouter();
   
   const onLogout = () => {
-    setAuth(null);
-    router.push('/auth/login');
+    api.post('/logout', undefined, { withCredentials: true })
+      .then(() => {
+        setAuth(null);
+        router.push('/auth/login');
+      })
+      .catch(error => console.error(error))
   }
 
   return (
