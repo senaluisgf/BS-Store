@@ -16,7 +16,7 @@ declare module 'express-session' {
   interface SessionData {
     uid: string;
     tipoUsuarioId: string;
-    carrinho: string[];
+    carrinho: Array<{produtoId: string, quantidade: number}>;
   }
 }
 
