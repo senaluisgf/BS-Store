@@ -17,30 +17,32 @@ export default function CarrinhoList() {
   return (
     <>
     <h1>Carrinho de Compras</h1>
-    <table style={{ border: '1px solid', color: 'black' }}>
-      <thead>
-        <tr>
-          <td>Quantidade</td>
-          <td>Nome</td>
-          <td>Preço Unitário do Produto</td>
-        </tr>
-      </thead>
-      <tbody>
-        {carrinho.map(({produto, quantidade}: any) => (
-          <tr key={produto.id}>
-            <td>{quantidade}</td>
-            <td>{produto.nome}</td>
-            <td>{produto.preco}</td>
+    <Box sx={{mt: 5, display: 'flex', flexDirection: 'column'}}>
+      <table style={{ border: '1px solid', color: 'black', marginBottom: 5 }}>
+        <thead>
+          <tr>
+            <td>Quantidade</td>
+            <td>Nome</td>
+            <td>Preço Unitário do Produto</td>
           </tr>
-        ))}
-      </tbody>
-    </table>
-    
-    <Box sx={{display: 'flex', justifyContent: 'space-evenly'}} >
-      <Button variant="contained">
-        Comprar
-      </Button>
-      <Typography variant="body1">Preço total: {precoTotal}</Typography>
+        </thead>
+        <tbody>
+          {carrinho.map(({produto, quantidade}: any) => (
+            <tr key={produto.id}>
+              <td>{quantidade}</td>
+              <td>{produto.nome}</td>
+              <td>{produto.preco}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
+      <Box sx={{display: 'flex', justifyContent: 'space-evenly'}} >
+        <Button variant="contained">
+          Comprar
+        </Button>
+        <Typography variant="body1">Preço total: {precoTotal}</Typography>
+      </Box>
     </Box>
     </>
   )
