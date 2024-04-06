@@ -1,4 +1,4 @@
-import { AuthContext } from '@/providers/auth-provider';
+import { useAuth } from '@/providers/auth-provider';
 import api from '@/utils/api';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -7,11 +7,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
 import Resourses from './resourses';
 
 export default function NavBar() {
-  const {auth, setAuth} = useContext(AuthContext);
+  const {auth, setAuth} = useAuth();
   const router = useRouter();
   
   const onLogout = () => {
