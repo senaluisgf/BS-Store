@@ -1,5 +1,6 @@
 import { useAuth } from '@/providers/auth-provider';
 import api from '@/utils/api';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -40,7 +41,10 @@ export default function NavBar() {
                 <Button component={Link} href='/auth/login' color="inherit">Login</Button>
                 <Button component={Link} href='/auth/signup' color="inherit">Sign Up</Button>
               </>
-            : <Button onClick={onLogout} color="inherit">Logout [{auth.nome}]</Button>
+            : <>
+                <Button onClick={onLogout} color="inherit">Logout [{auth.nome}]</Button>
+                <Button component={Link} href='/carrinho' color="inherit"><ShoppingCartIcon /></Button>
+              </>
           }
         </Toolbar>
       </AppBar>
