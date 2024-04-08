@@ -34,7 +34,7 @@ export default function NavBar() {
             component={Link}
             href={'/'}
           >
-            BS Store
+            <span>BS Store</span>
           </Typography>
           { !auth
             ? <>

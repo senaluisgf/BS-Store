@@ -2,6 +2,7 @@ import { CreateProdutoDTO } from "@/types/produto";
 import api from "@/utils/api";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
+import PageTitle from "../page-title";
 import ProdutoForm from "./produto-form";
 
 export default function ProdutoCreate() {
@@ -14,10 +15,10 @@ export default function ProdutoCreate() {
   }
   return (
     <>
-      <Box>
-        <h1>Criar Produto</h1>
+      <PageTitle titulo="Criar Produto"/>
+      <Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <ProdutoForm handleSubmit={handleSubmit} />
       </Box>
-      <ProdutoForm handleSubmit={handleSubmit} />
     </>
   )
 }

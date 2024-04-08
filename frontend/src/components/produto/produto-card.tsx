@@ -1,4 +1,5 @@
 import { AuthContext } from "@/providers/auth-provider";
+import styles from '@/styles/ProdutoCard.module.css';
 import { Produto } from "@/types/produto";
 import api from "@/utils/api";
 import AddIcon from '@mui/icons-material/Add';
@@ -16,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
+import PageTitle from "../page-title";
 interface ProdutoCardProps {
   id: string
 }
@@ -62,33 +64,44 @@ export default function ProdutoCard({id}: ProdutoCardProps) {
   if (!produto) return <div>Carregando...</div>
   
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardContent>
-        <Box sx={{display: 'flex', justifyContent: 'space-between'}} >
-          <Typography gutterBottom variant="h5" component="div">
-            {produto.nome}
-          </Typography>
-          {auth && auth.tipoUsuario === 'admin' && <div>
-            <IconButton component={Link} href={`/produto/update/${id}`}><EditIcon /></IconButton>
-            <IconButton onClick={onDelete} ><DeleteIcon /></IconButton>
-          </div>}
-        </Box>
-        <Typography variant="body2" color="text.secondary">
-          Preço: {produto.preco}<br />
-          Estoque: {produto.estoque}
-        </Typography>
-      </CardContent>
-      <CardActions style={{display: 'flex', justifyContent: 'space-between'}}>
-        <Typography variant="body2" color="text.secondary">
-          Quantidade: {quantidade}<br />
-          Preço total: {quantidade * produto.preco}<br />
-        </Typography>
-        <ButtonGroup variant="contained" aria-label="Basic button group">
-          <Button onClick={increaseQuantidade}><AddIcon /></Button>
-          <Button onClick={decreaseQuantidade}><RemoveIcon /></Button>
-          <Button onClick={buyProduto}><ShoppingCartIcon /></Button>
-        </ButtonGroup>
-      </CardActions>
-    </Card>
+    <>
+      <PageTitle titulo="Detalhes do Produto"/>
+      <Box className={styles.boxPage}>
+        <Card className={styles.cardContainer}>
+          <CardContent>
+            <Box className={styles.cardTitle}>
+              <h2>{produto.nome}</h2>
+              {auth && auth.tipoUsuario === 'admin' && <div>
+                <IconButton component={Link} href={`/produto/update/${id}`}><EditIcon /></IconButton>
+                <IconButton onClick={onDelete} ><DeleteIcon /></IconButton>
+              </div>}
+            </Box>
+            <Box className={styles.cardDescription}>
+              <Box className={styles.cardImage}>
+                <img
+                  src="https://tse4.mm.bing.net/th?id=OIP.gIGpcR8ihrORAUDnzngXlwHaEK&pid=Api&P=0&h=180"
+                  alt="Doguinho caramelo"
+                />
+              </Box>
+              <Typography variant="body2" color="text.secondary">
+                Preço: {produto.preco}<br />
+                Estoque: {produto.estoque}
+              </Typography>
+            </Box>
+          </CardContent>
+          <CardActions className={styles.cardFooter}>
+            <Typography variant="body2" color="text.secondary">
+              Quantidade: {quantidade}<br />
+              Preço total: {quantidade * produto.preco}<br />
+            </Typography>
+            <ButtonGroup variant="contained" aria-label="Basic button group">
+              <Button onClick={increaseQuantidade}><AddIcon /></Button>
+              <Button onClick={decreaseQuantidade}><RemoveIcon /></Button>
+              <Button onClick={buyProduto}><ShoppingCartIcon /></Button>
+            </ButtonGroup>
+          </CardActions>
+        </Card>
+      </Box>
+    </>
   );
 }

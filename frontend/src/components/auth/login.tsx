@@ -4,6 +4,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
+import PageTitle from "../page-title";
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -31,44 +32,46 @@ export default function Login() {
 
   return (
     <>
-      <h2>Login</h2>
-      <form onSubmit={onSubmit}>
-        <Box sx={{ mb: 2, mt: 2 }}>
-          <TextField
-            sx={{width: 300}}
-            required
-            label="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Box>
+      <PageTitle titulo="Login" />
+      <Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <form onSubmit={onSubmit}>
+          <Box sx={{ mb: 2, mt: 2 }}>
+            <TextField
+              sx={{width: 300}}
+              required
+              label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Box>
 
-        <Box>
-          <TextField
-            sx={{width: 300}}
-            label="Senha"
-            required
-            type={showPassword ? "text" : "password"}
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">
-                <IconButton onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>,
-            }}
-          />
-        </Box>
+          <Box>
+            <TextField
+              sx={{width: 300}}
+              label="Senha"
+              required
+              type={showPassword ? "text" : "password"}
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">
+                  <IconButton onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>,
+              }}
+            />
+          </Box>
 
-        <Box sx={{ mb: 2 }}>
-          <Typography color="red" variant="body2">
-            {error}
-          </Typography>
-        </Box>
+          <Box sx={{ mb: 2 }}>
+            <Typography color="red" variant="body2">
+              {error}
+            </Typography>
+          </Box>
 
-        <Button type="submit" variant="contained" size="small">Enviar</Button>
-      </form>
+          <Button type="submit" variant="contained" size="small">Enviar</Button>
+        </form>
+      </Box>
     </>
   )
 }

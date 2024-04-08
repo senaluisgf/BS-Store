@@ -6,6 +6,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import api from "@/utils/api";
+import PageTitle from "../page-title";
 
 export default function SignUp() {
   const [nome, setNome] = useState("");
@@ -32,70 +33,72 @@ export default function SignUp() {
 
   return (
     <>
-      <h1>Crie sua conta</h1>
-      <form onSubmit={onSubmit}>
-        <Box sx={{mb: 2, mt: 2}}>
-          <TextField
-            sx={{width: 300}}
-            label="Nome"
-            type="text"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
-        </Box>
+      <PageTitle titulo="Crie sua conta" />
+      <Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <form onSubmit={onSubmit}>
+          <Box sx={{mb: 2, mt: 2}}>
+            <TextField
+              sx={{width: 300}}
+              label="Nome"
+              type="text"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
+          </Box>
 
-        <Box sx={{mb: 2}}>
-          <TextField
-            sx={{width: 300}}
-            label="Email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></TextField>
-        </Box>
+          <Box sx={{mb: 2}}>
+            <TextField
+              sx={{width: 300}}
+              label="Email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></TextField>
+          </Box>
 
-        <Box sx={{ mb: 2 }}>
-          <TextField
-            sx={{width: 300}}
-            label="Senha"
-            type={showPassword ? "text" : "password"}
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">
-                <IconButton onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>,
-            }}
-          />
-        </Box>
+          <Box sx={{ mb: 2 }}>
+            <TextField
+              sx={{width: 300}}
+              label="Senha"
+              type={showPassword ? "text" : "password"}
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">
+                  <IconButton onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>,
+              }}
+            />
+          </Box>
 
-        <Box>
-          <TextField
-            sx={{width: 300}}
-            label="Confirme a senha"
-            type={showConfirmPassword ? "text" : "password"}
-            value={confirmeSenha}
-            onChange={(e) => setConfirmeSenha(e.target.value)}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">
-                <IconButton onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>,
-            }}
-          />
-        </Box>
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="body2" color="red">
-            {error}
-          </Typography>
-        </Box>
-        <Button variant="contained" type="submit" >
-          Enviar
-        </Button>
-      </form>
+          <Box>
+            <TextField
+              sx={{width: 300}}
+              label="Confirme a senha"
+              type={showConfirmPassword ? "text" : "password"}
+              value={confirmeSenha}
+              onChange={(e) => setConfirmeSenha(e.target.value)}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">
+                  <IconButton onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                  {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>,
+              }}
+            />
+          </Box>
+          <Box sx={{ mb: 2 }}>
+            <Typography variant="body2" color="red">
+              {error}
+            </Typography>
+          </Box>
+          <Button variant="contained" type="submit" >
+            Enviar
+          </Button>
+        </form>
+      </Box>
     </>
   )
 }

@@ -1,0 +1,10 @@
+.contentContainer {
+  margin: 30px;
+  padding: 10px;
+}
+
+.produtoRow {
+  padding: 5px;
+  color: blue;
+  text-decoration: underline;
+}

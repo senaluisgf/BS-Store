@@ -1,6 +1,7 @@
 import api from "@/utils/api";
 import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import PageTitle from "../page-title";
 
 export default function CarrinhoList() {
   const [carrinho, setCarrinho] = useState([]);
@@ -16,7 +17,7 @@ export default function CarrinhoList() {
 
   return (
     <>
-    <h1>Carrinho de Compras</h1>
+    <PageTitle titulo="Carrinho de compras"/>
     <Box sx={{mt: 5, display: 'flex', flexDirection: 'column'}}>
       <table style={{ border: '1px solid', color: 'black', marginBottom: 5 }}>
         <thead>

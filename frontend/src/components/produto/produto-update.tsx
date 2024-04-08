@@ -1,7 +1,9 @@
 import { Produto, UpdateProdutoDTO } from "@/types/produto";
 import api from "@/utils/api";
+import { Box } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import PageTitle from "../page-title";
 import ProdutoForm from "./produto-form";
 
 interface ProdutoUpdateProps {
@@ -30,8 +32,10 @@ export default function ProdutoUpdate({ id }: ProdutoUpdateProps) {
 
   return (
     <>
-      <h1>Atualizar Produto</h1>
-      <ProdutoForm handleSubmit={handdleSubmit} produto={produto} />
+      <PageTitle titulo="Atualizar Produto"/>
+      <Box sx={{display: 'flex', justifyContent: 'center'}}>
+        <ProdutoForm handleSubmit={handdleSubmit} produto={produto} />
+      </Box>
     </>
   )
 }

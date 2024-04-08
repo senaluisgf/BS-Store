@@ -12,9 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <NavBar />
-      <div style={{ margin: '20px' }}>
-        <Component {...pageProps} />
-      </div>
+      <Component {...pageProps} />
     </AuthProvider>
   );
 }

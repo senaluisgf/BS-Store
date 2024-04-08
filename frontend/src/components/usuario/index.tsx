@@ -2,6 +2,7 @@ import { Usuario } from "@/types/usuario";
 import api from "@/utils/api";
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
+import PageTitle from "../page-title";
 
 export default function UsuarioList() {
   const [usuarios, setUsuarios] = useState<Usuario[]>([])
@@ -14,8 +15,8 @@ export default function UsuarioList() {
 
   return (
     <>
-    <h1>Usuários</h1>
-    <Box>
+    <PageTitle titulo="Usuários"/>
+    <Box sx={{margin: '20px'}}>
       <ul>
         {usuarios.map(usuario => (
           <li key={usuario.id}>
