@@ -4,7 +4,7 @@ import { CreateProdutoDto, UpdateProdutoDto } from './produto.types';
 const prisma = new PrismaClient();
 
 export async function getAllProdutos(): Promise<Produto[]> {
-  return await prisma.produto.findMany();
+  return await prisma.produto.findMany({ orderBy: { nome: 'asc' } });
 }
 
 export async function jaExiste(nome: string): Promise<null | Produto> {
