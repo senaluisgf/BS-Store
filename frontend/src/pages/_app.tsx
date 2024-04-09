@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 
 import NavBar from "@/components/app-bar";
+import Footer from "@/components/app-bar/footer";
 import AuthProvider from "@/providers/auth-provider";
 import "@/styles/globals.css";
 import '@fontsource/roboto/300.css';
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <NavBar />
       <Component {...pageProps} />
+      <Footer />
     </AuthProvider>
   );
 }

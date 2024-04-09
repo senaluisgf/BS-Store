@@ -1,5 +1,4 @@
 import { useAuth } from '@/providers/auth-provider';
-import api from '@/utils/api';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,15 +12,6 @@ import Resourses from './resourses';
 export default function NavBar() {
   const {auth, setAuth} = useAuth();
   const router = useRouter();
-  
-  const onLogout = () => {
-    api.post('/logout', undefined, { withCredentials: true })
-      .then(() => {
-        setAuth(null);
-        router.push('/auth/login');
-      })
-      .catch(error => console.error(error))
-  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -42,7 +32,7 @@ export default function NavBar() {
                 <Button component={Link} href='/auth/signup' color="inherit">Sign Up</Button>
               </>
             : <>
-                <Button onClick={onLogout} color="inherit">Logout [{auth.nome}]</Button>
+              <span>Bem Vindo, {auth.nome}!</span>
                 <Button component={Link} href='/carrinho' color="inherit"><ShoppingCartIcon /></Button>
               </>
           }

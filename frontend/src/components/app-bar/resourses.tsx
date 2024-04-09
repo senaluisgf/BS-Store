@@ -1,3 +1,5 @@
+import { useAuth } from '@/providers/auth-provider';
+import api from '@/utils/api';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Box, IconButton, Menu, MenuItem } from "@mui/material";
 import Link from "next/link";
@@ -5,6 +7,7 @@ import { useState } from "react";
 
 export default function Resourses(){
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const { auth, setAuth } = useAuth();
   const open = Boolean(anchorEl);
   
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -14,6 +17,15 @@ export default function Resourses(){
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const onLogout = () => {
+    api.post('/logout', undefined, { withCredentials: true })
+      .then(() => {
+        setAuth(null);
+      })
+      .catch(error => console.error(error));
+      setAnchorEl(null);
+  }
   
   return (
     <Box>
@@ -52,12 +64,15 @@ export default function Resourses(){
             Produtos
           </MenuItem>
 
-          <MenuItem
-            onClick={handleClose}
-            component={Link} href='/usuario'
-          >
-            Usuários
-          </MenuItem>
+          {
+            auth &&
+            <MenuItem
+              onClick={onLogout}
+              component={Link} href='/'
+            >
+              Logout [{auth.nome}]
+            </MenuItem>
+          }
         </Menu>
     </Box>
   )

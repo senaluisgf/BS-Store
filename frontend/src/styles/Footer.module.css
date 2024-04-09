@@ -1,0 +1,6 @@
+.footer {
+  display: flex;
+  align-self: self-end;
+  background-color: blue;
+  min-height: 50px;
+}
