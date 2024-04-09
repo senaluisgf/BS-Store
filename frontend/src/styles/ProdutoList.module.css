@@ -3,8 +3,36 @@
   padding: 10px;
 }
 
-.produtoRow {
+.tableProduto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.rowProduto {
+  display: flex;
   padding: 5px;
   color: blue;
   text-decoration: underline;
+  margin: 2px;
+}
+
+.rowProduto > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rowImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80%;
+}
+
+.rowImage > img {
+  width: 100%;
+  height: 100%;
 }

@@ -23,25 +23,31 @@ export default function ProdutoList() {
       
       <PageTitle titulo="Produtos" />
       <Box className={styles.contentContainer}>
-        <ul>
+        <ul className={styles.tableProduto}>
         { 
           auth &&
           auth.tipoUsuario === 'admin' &&
-          <li>
-            <Button
-              component={Link}
-              href="/produto/create"
-              variant="contained"
-              size="small"
-            >
-              <AddIcon /> Adicionar um novo produto
-            </Button>
+          <li key='novo-produto-key'  className={styles.rowProduto}>
+            <Link href="/produto/create">
+              <Box className={styles.rowImage}>
+                <Button variant="contained"><AddIcon /> ADICIONAR UM NOVO PRODUTO</Button>
+              <span></span>
+              </Box>
+            </Link>
           </li>
         }
           
           {produtos.map(p => (
-            <li key={p.id} className={styles.produtoRow}>
-            <Link href={`produto/${p.id}`}><span>{p.nome}</span></Link>
+            <li key={p.id} className={styles.rowProduto}>
+            <Link href={`produto/${p.id}`}>
+              <Box className={styles.rowImage}>
+                <img
+                  src="https://tse4.mm.bing.net/th?id=OIP.gIGpcR8ihrORAUDnzngXlwHaEK&pid=Api&P=0&h=180"
+                  alt={p.nome}
+                />
+              </Box>
+              <span>{p.nome}</span>
+            </Link>
             </li>
           ))}
         </ul>
