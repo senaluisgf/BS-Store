@@ -1,10 +1,17 @@
 .produtoForm {
   display: flex;
+  margin: 10px;
   gap: 10px
 }
 
 .boxImg {
-  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eee;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
   max-width: 300px;
   max-height: 300px;
 }

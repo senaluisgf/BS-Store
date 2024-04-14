@@ -1,5 +1,6 @@
 import styles from '@/styles/CarrinhoList.module.css';
 import api from "@/utils/api";
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import PageTitle from "../page-title";
@@ -35,6 +36,8 @@ export default function CarrinhoList() {
                 <td>{produto.nome}</td>
                 <td>{quantidade}</td>
                 <td>{produto.preco}</td>
+                <td>{produto.preco}</td>
+                <td><RemoveCircleOutlineIcon /></td>
               </tr>
             ))}
           </tbody>

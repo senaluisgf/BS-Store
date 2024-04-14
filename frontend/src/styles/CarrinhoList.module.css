@@ -1,12 +1,12 @@
 .boxPage {
-  /* background-color: yellow; */
+  background-color: yellow;
   display: flex;
   justify-content: center;
   margin: 20px;
 }
 
 .tableContainer {
-  /* background-color: rebeccapurple; */
+  background-color: rebeccapurple;
   min-width: 50%;
   max-width: 70%;
   margin: 10px;
@@ -22,7 +22,7 @@
 }
 
 .paymentContainer {
-  /* background-color: red; */
+  background-color: red;
   display: flex;
   flex-direction: column;
   justify-content: start;

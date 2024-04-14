@@ -33,7 +33,7 @@ export default function ProdutoUpdate({ id }: ProdutoUpdateProps) {
   return (
     <>
       <PageTitle titulo="Atualizar Produto"/>
-      <Box sx={{display: 'flex', justifyContent: 'center'}}>
+      <Box sx={{display: 'flex', justifyContent: 'center', p: '10px'}}>
         <ProdutoForm handleSubmit={handdleSubmit} produto={produto} />
       </Box>
     </>

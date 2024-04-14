@@ -6,11 +6,7 @@ export interface Produto {
   estoque: number;
 }
 
-export interface CreateProdutoDTO extends Omit<Produto, 'id' | 'imageUrl' > {
-  imagem?: string;
-  imageUrl?: string;
+export interface CreateProdutoDTO extends Omit<Produto, 'id' | 'imageUrl'> {
+  imagem: string;
 }
-export interface UpdateProdutoDTO extends Omit<Produto, 'id' | 'imageUrl'> {
-  imagem?: string;
-  imageUrl?: string;
-}
+export interface UpdateProdutoDTO extends Omit<Produto, 'id' | 'imageUrl'> { }

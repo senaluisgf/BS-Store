@@ -15,8 +15,6 @@ export default function ProdutoCreate() {
     formData.append('preco', produto.preco.toString());
     formData.append('estoque', produto.estoque.toString());
 
-    console.log('preço', formData.get('preco'));
-
     api.post('/produto', formData, { withCredentials: true })
       .then(() => router.push('/produto'))
       .catch(error => console.error(error));
