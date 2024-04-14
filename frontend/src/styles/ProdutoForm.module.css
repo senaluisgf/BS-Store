@@ -1,0 +1,15 @@
+.produtoForm {
+  display: flex;
+  gap: 10px
+}
+
+.boxImg {
+  background-color: aqua;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.boxImg > img {
+  width: 100%;
+  height: 100%;
+}

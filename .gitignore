@@ -5,6 +5,7 @@
 
 build
 logs
+backend/public/img
 
 # git ignore do frontend
 # dependencies

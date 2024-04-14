@@ -42,7 +42,7 @@ export default function ProdutoList() {
             <Link href={`produto/${p.id}`}>
               <Box className={styles.rowImage}>
                 <img
-                  src="https://tse4.mm.bing.net/th?id=OIP.gIGpcR8ihrORAUDnzngXlwHaEK&pid=Api&P=0&h=180"
+                  src={p.imageUrl}
                   alt={p.nome}
                 />
               </Box>

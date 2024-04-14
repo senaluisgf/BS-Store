@@ -79,7 +79,7 @@ export default function ProdutoCard({id}: ProdutoCardProps) {
             <Box className={styles.cardDescription}>
               <Box className={styles.cardImage}>
                 <img
-                  src="https://tse4.mm.bing.net/th?id=OIP.gIGpcR8ihrORAUDnzngXlwHaEK&pid=Api&P=0&h=180"
+                  src={produto.imageUrl}
                   alt="Doguinho caramelo"
                 />
               </Box>

@@ -9,10 +9,19 @@ export default function ProdutoCreate() {
   const router = useRouter();
 
   const handleSubmit = (produto: CreateProdutoDTO) => {
-    api.post('/produto', produto, { withCredentials: true })
+    const formData = new FormData();
+    formData.append('imagem', produto.imagem!);
+    formData.append('nome', produto.nome);
+    formData.append('preco', produto.preco.toString());
+    formData.append('estoque', produto.estoque.toString());
+
+    console.log('preço', formData.get('preco'));
+
+    api.post('/produto', formData, { withCredentials: true })
       .then(() => router.push('/produto'))
       .catch(error => console.error(error));
   }
+
   return (
     <>
       <PageTitle titulo="Criar Produto"/>
