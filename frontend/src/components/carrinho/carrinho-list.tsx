@@ -1,3 +1,4 @@
+import { toBrazilianCurrency } from '@/services/currency';
 import styles from '@/styles/CarrinhoList.module.css';
 import api from "@/utils/api";
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
@@ -25,19 +26,21 @@ export default function CarrinhoList() {
         <table>
           <thead>
             <tr>
+              <td>Produto</td>
               <td>Nome</td>
               <td>Quantidade</td>
-              <td>Preço/Unidade</td>
+              <td>$/Unid</td>
+              <td>Remover</td>
             </tr>
           </thead>
           <tbody>
             {carrinho.map(({produto, quantidade}: any) => (
               <tr key={produto.id}>
+                <td><Box className={styles.imgCollumn}><img src={produto.imageUrl} alt={produto.nome} /></Box></td>
                 <td>{produto.nome}</td>
                 <td>{quantidade}</td>
-                <td>{produto.preco}</td>
-                <td>{produto.preco}</td>
-                <td><RemoveCircleOutlineIcon /></td>
+                <td>{toBrazilianCurrency(produto.preco)}</td>
+                <td><Button onClick={() => alert(`implementar remoção`)}><RemoveCircleOutlineIcon /></Button></td>
               </tr>
             ))}
           </tbody>
@@ -45,8 +48,11 @@ export default function CarrinhoList() {
       </Box>
         
       <Box className={styles.paymentContainer}>
-        <Typography variant="body1">Preço total: {precoTotal}</Typography>
-        <Button variant="contained">
+        <Typography variant="body1">Total: {toBrazilianCurrency(precoTotal)}</Typography>
+        <Button
+          variant="contained"
+          onClick={() => alert("Implementar compra")}
+        >
           Comprar
         </Button>
       </Box>

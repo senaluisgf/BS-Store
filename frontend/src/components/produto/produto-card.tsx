@@ -1,4 +1,5 @@
 import { AuthContext } from "@/providers/auth-provider";
+import { toBrazilianCurrency } from "@/services/currency";
 import styles from '@/styles/ProdutoCard.module.css';
 import { Produto } from "@/types/produto";
 import api from "@/utils/api";
@@ -49,9 +50,9 @@ export default function ProdutoCard({id}: ProdutoCardProps) {
     if (quantidade) {
       api.post(`/compra/produto/${id}`, {quantidade}, { withCredentials: true })
         .then(({data}) => {
-          console.log(data)
+          alert(`Foram adicionadas ${quantidade} unidades do produto ${produto?.nome} ao carrinho`)
         })
-        .catch(error => console.error(error))
+        .catch(error => alert(error))
     }
   }
 
@@ -84,7 +85,7 @@ export default function ProdutoCard({id}: ProdutoCardProps) {
                 />
               </Box>
               <Typography variant="body2" color="text.secondary">
-                Preço: {produto.preco}<br />
+                Preço: {toBrazilianCurrency(produto.preco)}<br />
                 Estoque: {produto.estoque}
               </Typography>
             </Box>
@@ -92,7 +93,7 @@ export default function ProdutoCard({id}: ProdutoCardProps) {
           <CardActions className={styles.cardFooter}>
             <Typography variant="body2" color="text.secondary">
               Quantidade: {quantidade}<br />
-              Preço total: {quantidade * produto.preco}<br />
+              Preço total: {toBrazilianCurrency(quantidade * produto.preco)}<br />
             </Typography>
             <ButtonGroup variant="contained" aria-label="Basic button group">
               <Button onClick={increaseQuantidade}><AddIcon /></Button>
